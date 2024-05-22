@@ -1,0 +1,31 @@
+management:
+    endpoint:
+        metrics:
+            enabled: true
+    endpoints:
+        web:
+            exposure:
+                include: health,info,prometheus
+    prometheus:
+        metrics:
+            export:
+                enabled: true
+request:
+    throttle:
+        maxRequestsPerMinute: 10
+        timeFrameInMillis: 60000
+spring:
+    application:
+        name: GetClientInfoGateway
+    datasource:
+        driver-class-name: org.h2.Driver
+        hikari:
+            connection-timeout: 5000
+        password: ''
+        url: jdbc:h2:mem:testdb
+        username: sa
+logging:
+    level:
+        root: "warn"
+        org.springframework.web: "error"
+        org.hibernate: "error"

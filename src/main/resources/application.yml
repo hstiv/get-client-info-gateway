@@ -1,0 +1,32 @@
+management:
+    endpoint:
+        metrics:
+            enabled: true
+    endpoints:
+        web:
+            exposure:
+                include: health,info,prometheus
+    prometheus:
+        metrics:
+            export:
+                enabled: true
+request:
+    throttle:
+        maxRequestsPerMinute: 10
+        timeFrameInMillis: 60000
+spring:
+    application:
+        name: GetClientInfoGateway
+    datasource:
+        driver-class-name: org.postgresql.Driver
+        hikari:
+            connection-timeout: 5000
+        password: postgres
+        url: jdbc:postgresql://localhost:5432/postgres
+        username: postgres
+
+logging:
+    level:
+        root: "warn"
+        org.springframework.web: "debug"
+        org.hibernate: "error"
