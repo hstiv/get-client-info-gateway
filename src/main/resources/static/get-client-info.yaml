@@ -10,10 +10,6 @@ servers:
         enum:
           - get-client-info-gateway.local
           - get-client-info-gateway.ddns.net
-      version:
-        default: v1
-        enum:
-          - v1
 paths:
   /info:
     get:
@@ -170,16 +166,19 @@ components:
       maxLength: 1
       format: int64
       example: 0
+      pattern: ^[0-4]{1}$
     CodeName:
       type: string
       description: Описание кода ответа
-      maxLength: 100
+      maxLength: 50
       example: Success
+      pattern: ^[A-Za-z]{0,50}$
     CodeDescription:
       type: string
       description: Детальная информация по ответу, информация об ошибке
-      maxLength: 100
+      maxLength: 50
       example: Successful response from server
+      pattern: ^[A-Za-z]{0,50}$
     Status:
       type: object
       description: Статус ответа
@@ -203,6 +202,7 @@ components:
           $ref: '#/components/schemas/Payload'
       required:
         - status
+      additionalProperties: false
     Payload:
       type: object
       description: Информация о клиенте из кеша

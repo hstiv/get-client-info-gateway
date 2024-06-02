@@ -1,0 +1,3 @@
+apis:
+  src/main/resources/static/get-client-info.yaml:
+    alias: "api-get-client-info-gateway"
